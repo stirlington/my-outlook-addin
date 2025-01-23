@@ -19,4 +19,3 @@ document.getElementById("setReminderButton").addEventListener("click", () => {
   
    status.innerText = `A follow-up reminder has been set for ${reminderDate.toLocaleString()}!`;
 });
-
