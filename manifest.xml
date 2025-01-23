@@ -1,1 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:type="TaskPaneApp">
+  <Id>12345678-1234-1234-1234-123456789abc</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Your Name</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Follow-Up Add-In" />
+  <Description DefaultValue="Add a follow-up reminder to your calendar." />
+  
+  <!-- Icon URLs -->
+  <IconUrl DefaultValue="https://your-username.github.io/your-repository/icon.png" />
+  
+  <!-- Task pane settings -->
+  <Hosts>
+    <Host Name="Mailbox" />
+  </Hosts>
+
+  <!-- Source location for the task pane -->
+  <Resources>
+    <bt:Urls>
+      <bt:Url id="homePage" DefaultValue="https://your-username.github.io/your-repository/index.html" />
+    </bt:Urls>
+  </Resources>
+
+  <!-- Extension points -->
+  <ExtensionPoints>
+    <MessageReadCommandSurface>
+      <OfficeTab id="TabDefault">
+        <Group id="msgReadCmdGroup" label="Custom Actions">
+          <Control xsi:type="Button" id="setReminderButton">
+            <Label resid="setReminderLabel"/>
+            <Supertip>
+              <Title resid="setReminderTitle"/>
+              <Description resid="setReminderDescription"/>
+            </Supertip>
+            <Icon>
+              <bt:Image size="16" resid="icon16"/>
+              <bt:Image size="32" resid="icon32"/>
+              <bt:Image size="80" resid="icon80"/>
+            </Icon>
+            <Action xsi:type="ShowTaskpane">
+              <SourceLocation resid="homePage"/>
+            </Action>
+          </Control>
+        </Group>
+      </OfficeTab>
+    </MessageReadCommandSurface>
+  </ExtensionPoints>
+
+  <!-- Strings -->
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1">
+    <Hosts>
+      <Host xsi:type="Mailbox">
+        <!-- Commands -->
+        <DesktopFormFactor>
+          <!-- Message Read Command Surface -->
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <!-- Button -->
+            <OfficeTab id="TabDefault">
+              <Group id="msgReadCmdGroup" label="Custom Actions">
+                <!-- Add Reminder Button -->
+                <Control xsi:type="Button" id="setReminderButton">
+                  <Label resid="setReminderLabel"/>
+                  <Supertip>
+                    <Title resid="setReminderTitle"/>
+                    <Description resid="setReminderDescription"/>
+                  </Supertip>
+                  <Icon>
+                    <!-- Replace with your icon URLs -->
+                    <bt:Image size="16" resid="icon16"/>
+                    <bt:Image size="32" resid="icon32"/>
+                    <bt:Image size="80" resid="icon80"/>
+                  </Icon>
+                  <!-- Action to open task pane -->
+                  <Action xsi:type="ShowTaskpane">
+                    <!-- Hosted URL -->
+                    <SourceLocation resid="homePage"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <!-- Resources -->
+    <Resources>
+      <!-- Strings -->
+      <bt:Strings DefaultLocale="en-US">
+        <!-- Labels and Descriptions -->
+        <bt:String id="setReminderLabel" DefaultValue="Set Reminder"/>
+        <bt:String id="setReminderTitle" DefaultValue="Set Follow-Up Reminder"/>
+        <bt:String id="setReminderDescription" DefaultValue="Adds a follow-up reminder to your calendar."/>
+      </bt:Strings>
+
+      <!-- Icons (replace with your GitHub-hosted icons) -->
+      <!-- You can use placeholder images or create your own icons -->
+    </Resources>
+
+  </VersionOverrides>
+
+</OfficeApp>
+
 
